@@ -13,7 +13,7 @@ const Panel = ({ selected, Image,credit,setCredit,msg,setMsg }) => {
     useEffect(()=>{
         const timer = setTimeout(()=>setMsg(""),3000) 
         return(()=>clearTimeout(timer))
-    },[msg])
+    },[msg, setMsg])
     return (
         <>
             <div className='pointer-events-none flex flex-col text-center'>
@@ -33,7 +33,7 @@ const Panel = ({ selected, Image,credit,setCredit,msg,setMsg }) => {
 
             <div className='flex flex-col mt-4 gap-2'>
                 {[1, 5 ].map((value, index) => (
-                <button onClick={()=>handleAction(value)} className='bg-green-300 p-2 text-center rounded-sm'>${value}</button>))}
+                <button key={index} onClick={()=>handleAction(value)} className='bg-green-300 p-2 text-center rounded-sm'>${value}</button>))}
                 <button className='bg-red-200 rounded-sm p-2' onClick={() => setCredit(3)}>
                     Credit Card
                 </button>

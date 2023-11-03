@@ -134,7 +134,7 @@ const Page = () => {
                             >
                                 <div className='p-2 pointer-events-none grow overflow-hidden '>
                                     {/* <Image src={`https://picsum.photos/id/${index * 11}/200`} /> */}
-                                    <Image src={item.icon} />
+                                    <Image alt="HELLO" src={item.icon} />
 
                                 </div>
                                 <div className='pointer-events-none rounded-sm py-1 flex flex-col bg-black  grow text-xs'>
@@ -162,6 +162,6 @@ const Page = () => {
     )
 }
 const Image = React.memo(function Image({ src }) {
-    return <img src={src} className="object-contain h-full w-full object-center grayscale-[35%]" />;
+    return <img alt="alt" src={src} className="object-contain h-full w-full object-center grayscale-[35%]" />;
 });
 export default Page

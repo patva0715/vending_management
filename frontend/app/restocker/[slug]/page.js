@@ -10,7 +10,7 @@ const Page = ({ params }) => {
   }
   useEffect(() => {
     fetchItem()
-  }, [params.slug])
+  }, [params.slug,fetchItem])
   return (
     <div>
       <div className='p-6 bg-gray-600 text-3xl text-white mb-4'>
