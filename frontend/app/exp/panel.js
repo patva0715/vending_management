@@ -1,7 +1,7 @@
 'use-client'
 import React, { useEffect, useState } from 'react'
 
-const panel = ({ selected, Image,credit,setCredit,msg,setMsg }) => {
+const Panel = ({ selected, Image,credit,setCredit,msg,setMsg }) => {
     
     const handleAction = (value) =>{
         if(credit+value > 3){
@@ -43,4 +43,4 @@ const panel = ({ selected, Image,credit,setCredit,msg,setMsg }) => {
     )
 }
 
-export default panel
+export default Panel

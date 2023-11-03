@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const [machine, setMachine] = useState({})
   const fetchItem = async () => {
     const data = await fetch(`http://localhost:5001/machine/${params.slug}`).then((res) => res.json())
@@ -54,4 +54,4 @@ const Indicator = ({itemStock}) => {
 
   )
 }
-export default page
+export default Page

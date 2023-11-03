@@ -2,7 +2,7 @@
 import { useTransition, animated } from "@react-spring/web";
 import { useState } from "react";
 
-const page = ({ }) => {
+const Page = ({ }) => {
   const [data,setData] = useState("ffff")
   const [transitions, api] = useTransition(data, () => ({
     from: { opacity: .2 },
@@ -23,4 +23,4 @@ const page = ({ }) => {
     </div>
   );
 };
-export default page;
+export default Page;

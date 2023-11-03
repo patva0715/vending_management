@@ -92,7 +92,7 @@ const items = [{
     id: 15,
     icon: '/icons/soda-1.png'
 },]
-const page = () => {
+const Page = () => {
     const [selected, setSelected] = useState({
         name: "_________",
         price: 0.00,
@@ -164,4 +164,4 @@ const page = () => {
 const Image = React.memo(function Image({ src }) {
     return <img src={src} className="object-contain h-full w-full object-center grayscale-[35%]" />;
 });
-export default page
+export default Page

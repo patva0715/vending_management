@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTransition, animated } from "@react-spring/web";
-const page = () => {
+const Page = () => {
   const [selectedMachine, setSelectedMachine] = useState({
     id: 1,
     items: [
@@ -42,7 +42,7 @@ const page = () => {
 
   const fetchIds = async () => {
     try {
-      const data = await fetch("http://localhost:5001/machine").then((res) =>
+      const data = await fetch("https://vending-backend-dztgd6i06-patrickvalera.vercel.app/machine").then((res) =>
         res.json()
       );
       setMachines(data);
@@ -354,4 +354,4 @@ const PaymentAcceptor = ({ method, item }) => {
       </div>
     );
 };
-export default page;
+export default Page;
