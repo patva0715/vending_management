@@ -250,6 +250,7 @@ import { useTransition, animated } from "@react-spring/web";
 import { ImSpinner8 } from "react-icons/im";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { BsFillGridFill } from "react-icons/bs";
+import {BiSolidDownArrow,BiSolidUpArrow} from "react-icons/bi"
 const Page = () => {
   const [selectedMachine, setSelectedMachine] = useState();
   const [machines, setMachines] = useState();
@@ -286,7 +287,7 @@ const Page = () => {
     fetchItem(id);
   };
   const handleSelect = (item, key) => {
-    console.log(item.key)
+    console.log(item.key);
     setWindowOpen(true);
     setSelected(item);
     // e.target.focus();
@@ -314,14 +315,14 @@ const Page = () => {
   return (
     <div className="">
       <OrderWindow
-      selectedMachine={selectedMachine}
+        selectedMachine={selectedMachine}
         open={windowOpen}
         setWindowOpen={setWindowOpen}
         item={selected}
       />
       <div className="py-5 mb-4 bg-gray-600 text-white">
         <h1 className=" text-3xl flex max-w-full md:max-w-[50vw] mx-auto ">
-        Transaction Simulator
+          Transaction Simulator
         </h1>
       </div>
       <div className="text-center text-xl flex max-w-full md:max-w-[50vw] mx-auto items-center mb-2">
@@ -358,7 +359,7 @@ const Page = () => {
                 <Item
                   basis={basis}
                   key={index}
-                  item={{...item,key:index}}
+                  item={{ ...item, key: index }}
                   selected={selected}
                   handleSelect={handleSelect}
                 />
@@ -381,7 +382,7 @@ const Item = ({ basis, item, handleSelect, selected }) => {
       }}
     >
       <button
-        className="w-full bg-gray-200 dark:bg-gray-800 border-2 rounded-md p-2 flex flex-col items-center shrink-0   "
+        className="w-full bg-gray-200 dark:bg-gray-800 border-2 rounded-sm p-2 flex flex-col items-center shrink-0   "
         style={{
           borderColor: `${item.id == selected.id ? "#aa5555" : "#333333"}`,
         }}
@@ -409,21 +410,19 @@ const Item = ({ basis, item, handleSelect, selected }) => {
 };
 
 // DIVIDER
-const OrderWindow = ({ setWindowOpen, open, item,selectedMachine }) => {
+const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
   const [payMethod, setPayMethod] = useState("cash");
-  const [selectedIdx, setSelectedIdx]=useState(item.key)
+  const [selectedIdx, setSelectedIdx] = useState(item.key);
   const handleClose = () => {
     setWindowOpen(false);
   };
-  const handleChangeItem =()=>{
-
-  }
+  const handleChangeItem = () => {};
   const divStyle = {
     display: open ? "flex" : "none",
   };
-  useEffect(()=>{
-    setSelectedIdx(item.key)
-  },[item])
+  useEffect(() => {
+    setSelectedIdx(item.key);
+  }, [item]);
 
   return (
     <>
@@ -437,9 +436,9 @@ const OrderWindow = ({ setWindowOpen, open, item,selectedMachine }) => {
           onClick={(e) => e.stopPropagation()}
         >
           {/* ITEM DIVIDER CONTAINER */}
-          <div className="basis-1/3 grow bg-white rounded-lg flex flex-col py-4">
-            <button>NEXT</button>
-            <div className="py-4 flex flex-col items-center justify-center grow">
+          <div className="basis-1/3 grow bg-white rounded-lg flex items-center flex-col  justify-center">
+            <button className="text-3xl"><BiSolidUpArrow/></button>
+            <div className="py-4 flex flex-col items-center justify-center ">
               <div className="">
                 <Image
                   alt="icon"
@@ -454,7 +453,7 @@ const OrderWindow = ({ setWindowOpen, open, item,selectedMachine }) => {
               </div>
               <span className="text-xl">${item.price}</span>
             </div>
-            <button>PREV</button>
+            <button className="text-3xl"><BiSolidDownArrow/></button>
           </div>
 
           {/* PAYMENT DIVIDER CONTAINER */}
@@ -490,6 +489,8 @@ const OrderWindow = ({ setWindowOpen, open, item,selectedMachine }) => {
 // DIVIDER
 const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
   const [transaction, setTransaction] = useState();
+  const [receipt, setReceipt] = useState();
+  const [receiptOpen, setReceiptOpen] = useState(false);
   const PayCashStyle = {
     backgroundColor: payMethod == "cash" ? "#222" : "transparent",
     color: payMethod == "cash" ? "white" : "inherit",
@@ -515,7 +516,9 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
     ),
     ({ style }) => <animated.div style={style}>CARD APPROVED</animated.div>,
     ({ style, change }) => (
-      <animated.div style={style}>DISPENSING CHANGE (${change})</animated.div>
+      <animated.div style={style}>
+        DISPENSING CHANGE (${(Math.round(change * 10) / 10).toFixed(2)})
+      </animated.div>
     ),
   ];
   const transitions = useTransition(statusIdx, {
@@ -532,6 +535,11 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
     setTransaction({
       item: itemBought,
       payMethod: method,
+    });
+    setReceipt({
+      item: { ...item },
+      machineId: 1,
+      payMethod:payMethod
     });
   };
   useEffect(() => {
@@ -559,10 +567,46 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
   }, [transaction]);
   useEffect(() => {
     if (!open) {
+      setReceiptOpen(false)
+      setReceipt(0);
       setTransaction(null);
       setStatusIdx(0);
     }
   }, [open]);
+  // DIVIDER RECEIPT IF THERE IS
+  if (receiptOpen&&receipt)
+    {
+      console.log(receipt)
+      return (
+      <div className="flex justify-center flex-col w-full">
+        <div className="flex">
+          <span>Machine ID</span>
+          <span className="grow text-right">01</span>
+        </div>
+        <div className="flex">
+          <span>Item ID</span>
+          <span className="grow text-right">0002</span>
+        </div>
+        <div className="flex">
+          <span>Machine ID</span>
+          <span className="grow text-right">{receipt.item.name}</span>
+        </div>
+        <div className="flex">
+          <span>Price paid</span>
+          <span className="grow text-right">${receipt.item.price}</span>
+        </div>
+        <div className="flex">
+          <span>Payment Method</span>
+          <span className="grow text-right">{receipt.payMethod}</span>
+        </div>
+        <div className="flex">
+          <span>Date & Time</span>
+          <span className="grow text-right">Nov-3-2023 09:22:33</span>
+        </div>
+
+        <button onClick={() => setReceiptOpen(false)}>Close</button>
+      </div>
+    );}
   // DIVIDER PROCESSING TRANSACTION WINDOW
   if (transaction)
     return (
@@ -587,7 +631,10 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
         {/* <button onClick={()=>setTransaction({payMethod:'cash'})}>CASH</button> */}
         <div className=" min-h-[2rem] mt-2">
           {statusIdx == 3 ? (
-            <button className="fade border-[1px] h-full px-2 border-black rounded-sm">
+            <button
+              className="fade border-[1px] h-full px-2 border-black rounded-sm"
+              onClick={() => setReceiptOpen(true)}
+            >
               View Receipt
             </button>
           ) : (
@@ -655,7 +702,7 @@ const PaymentAcceptor = ({ method, item, processOrder }) => {
           </div>
         </div>
         {!loadingCash ? (
-          <div className="basis-full flex  gap-2 mt-4">
+          <div className="basis-full flex  gap-2 mt-4 font-semibold">
             <button
               className="grow bg-green-300 rounded-md"
               onClick={() => handleCashInsert(1)}
