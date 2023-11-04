@@ -8,14 +8,14 @@ const machine_dict = {
         stock: 8,
         price: 3,
         id: 1,
-        icon: "/icons/chips-1.png",
+        icon: "/icons/chips-3.png",
       },
       {
         name: "Ruffles",
         stock: 0,
         price: 1.5,
         id: 2,
-        icon: "/icons/chips-2.png",
+        icon: "/icons/chips-3.png",
       },
       {
         name: "Sneakers",
@@ -93,11 +93,11 @@ const machine_dict = {
         icon: "/icons/energy-drink.png",
       },
       {
-        name: "Monster",
+        name: "Egg",
         stock: 7,
-        price: 1.29,
+        price: 6.50,
         id: 12,
-        icon: "/icons/energy-drink.png",
+        icon: "/icons/egg.png",
       },
       {
         name: "Water",
@@ -154,84 +154,84 @@ const machine_dict = {
         stock: 7,
         price: 2.49,
         id: 13,
-        icon: "/icons/cookies.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Pepsi",
         stock: 15,
         price: 1.99,
         id: 14,
-        icon: "/icons/soda.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Oatmeal",
         stock: 4,
         price: 3.49,
         id: 15,
-        icon: "/icons/oatmeal.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Yogurt",
         stock: 10,
         price: 1.79,
         id: 16,
-        icon: "/icons/yogurt.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Oranges",
         stock: 20,
         price: 0.79,
         id: 17,
-        icon: "/icons/fruit.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Cereal",
         stock: 6,
         price: 2.99,
         id: 18,
-        icon: "/icons/cereal.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Bottled Water",
         stock: 18,
         price: 0.99,
         id: 19,
-        icon: "/icons/water.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Frozen Pizza",
         stock: 3,
         price: 4.99,
         id: 20,
-        icon: "/icons/pizza.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Ice Cream",
         stock: 8,
         price: 3.49,
         id: 21,
-        icon: "/icons/ice-cream.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Cucumbers",
         stock: 10,
         price: 0.99,
         id: 22,
-        icon: "/icons/vegetables.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Soda",
         stock: 12,
         price: 1.49,
         id: 23,
-        icon: "/icons/soda.png",
+        icon: "/icons/energy-bar.png",
       },
       {
         name: "Eggs",
         stock: 14,
         price: 2.29,
         id: 24,
-        icon: "/icons/eggs.png",
+        icon: "/icons/energy-bar.png",
       },
     ],
     theme: {
@@ -343,7 +343,7 @@ const Page = () => {
           ))}
         <div className="grow flex justify-end">
           <button
-            className=" text-2xl p-4"
+            className=" text-2xl p-4 opacity-80"
             onClick={() => setBasis((x) => (x + 1) % 4)}
           >
             <BsFillGridFill />
@@ -391,7 +391,8 @@ const Item = ({ basis, item, handleSelect, selected }) => {
         <div className="shrink-0">
           <Image
             alt="icon"
-            src="/icons/chips-1.png"
+            // src="/icons/chips-1.png"
+            src={item.icon}
             width={70}
             height={70}
             className="ico z-0"
@@ -402,7 +403,7 @@ const Item = ({ basis, item, handleSelect, selected }) => {
           {/* <span>stock: {item.stock}</span> */}
         </div>
         <span className="text-lg shrink-0 basis-2 grow text-right ">
-          ${item.price}
+          ${Number(item.price).toFixed(2)}
         </span>
       </button>
     </div>
@@ -442,7 +443,8 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
               <div className="">
                 <Image
                   alt="icon"
-                  src="/icons/chips-1.png"
+                  // src="/icons/chips-1.png"
+                  src={item.icon}
                   width={70}
                   height={70}
                   className="ico z-0"
@@ -451,7 +453,7 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
               <div className="text-left">
                 <span className="text-lg font-bold">{item.name}</span>
               </div>
-              <span className="text-xl">${item.price}</span>
+              <span className="text-xl">${Number(item.price).toFixed(2)}</span>
             </div>
             <button className="text-3xl"><BiSolidDownArrow/></button>
           </div>
@@ -550,9 +552,9 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
       // TODO: DISPENSING ITEM
       setTimeout(() => setStatusIdx(2), 2000);
       // TODO: DISPENSING CHANGE
-      setTimeout(() => setStatusIdx(6), 4500);
+      setTimeout(() => setStatusIdx(6), 4800);
       // TODO: TRANSACTION COMPLETE
-      setTimeout(() => setStatusIdx(3), 6000);
+      setTimeout(() => setStatusIdx(3), 6500);
     } else {
       setStatusIdx(0);
       // AUTHENTICATING CARD START AT 1000ms
@@ -562,7 +564,7 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
       // VENDING
       setTimeout(() => setStatusIdx(2), 5000);
       // TRANSACTION COMPLETE
-      setTimeout(() => setStatusIdx(3), 7500);
+      setTimeout(() => setStatusIdx(3), 7300);
     }
   }, [transaction]);
   useEffect(() => {
@@ -579,6 +581,7 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
       console.log(receipt)
       return (
       <div className="flex justify-center flex-col w-full">
+        <span className="text-lg font-semibold text-center">Transaction Data</span>
         <div className="flex">
           <span>Machine ID</span>
           <span className="grow text-right">01</span>
@@ -588,11 +591,11 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
           <span className="grow text-right">0002</span>
         </div>
         <div className="flex">
-          <span>Machine ID</span>
+          <span>Item Name</span>
           <span className="grow text-right">{receipt.item.name}</span>
         </div>
         <div className="flex">
-          <span>Price paid</span>
+          <span>Price Paid</span>
           <span className="grow text-right">${receipt.item.price}</span>
         </div>
         <div className="flex">
@@ -604,7 +607,7 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
           <span className="grow text-right">Nov-3-2023 09:22:33</span>
         </div>
 
-        <button onClick={() => setReceiptOpen(false)}>Close</button>
+        <button className="p-1 rounded-sm bg-red-100" onClick={() => setReceiptOpen(false)}>Close</button>
       </div>
     );}
   // DIVIDER PROCESSING TRANSACTION WINDOW
@@ -763,7 +766,7 @@ const PaymentAcceptor = ({ method, item, processOrder }) => {
           className="basis-full bg-black text-white rounded-md p-3 mt-2"
           onClick={handleCardUse}
         >
-          Pay ${item.price}
+          Pay ${Number(item.price).toFixed(2)}
         </button>
       </div>
     );

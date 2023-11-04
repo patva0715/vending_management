@@ -1,6 +1,6 @@
-'use client'
-import Link from 'next/link'
-import React,{useEffect, useState} from 'react'
+"use client";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 const machine_dict = {
   1: {
     id: 1,
@@ -246,61 +246,98 @@ const machine_dict = {
   },
 };
 const Page = () => {
-  const [machineIds, setMachineIds] = useState([])
-  const [instructionOpen, setInstructionOpen] = useState(false)
-  const [Instruction, setInstruction] = useState()
+  const [machineIds, setMachineIds] = useState([]);
+  const [instructionOpen, setInstructionOpen] = useState(false);
+  const [Instruction, setInstruction] = useState();
   const fetchIds = async () => {
     try {
-      setMachineIds(Object.keys(machine_dict))
-      return
-      const data = await fetch("http://localhost:5001/machine").then((res) => res.json())
-      setMachineIds(data)
+      setMachineIds(Object.keys(machine_dict));
+      return;
+      const data = await fetch("http://localhost:5001/machine").then((res) =>
+        res.json()
+      );
+      setMachineIds(data);
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message);
     }
-
-  }
-  useEffect(()=>{fetchIds()},[])
-  if(instructionOpen)return(
-    <div>
-      <button className='p-4 border-[1px] border-black' onClick={()=>setInstructionOpen(false)}>CLOSE</button>
+  };
+  useEffect(() => {
+    fetchIds();
+  }, []);
+  if (instructionOpen)
+    return (
       <div>
-        YOOOO DO THIS
+        <div className="bg-gray-600 p-6 text-white text-3xl flex">
+          <div className="grow">
+            <h1>Restocker John Doe</h1>
+          </div>
+          <div className="text-base">
+            <button>Profile</button>
+          </div>
+        </div>
+        <button
+          className="p-4 border-[1px] border-black"
+          onClick={() => setInstructionOpen(false)}
+        >
+          CLOSE
+        </button>
+        <div>
+          <ul>
+            <li>YOO DO THIS</li>
+            <li>YOO DO THIS</li>
+            <li>YOO DO THIS</li>
+            <li>YOO DO THIS</li>
+          </ul>
+          <img src="/icons/dab.gif" />
+        </div>
       </div>
-    </div>
-  )
+    );
   return (
     <div className=" dark:bg-black  h-screen">
-
-      <div className='bg-gray-600 p-6 text-white text-3xl flex'>
-        <div className='grow'>
+      <div className="bg-gray-600 p-6 text-white text-3xl flex">
+        <div className="grow">
           <h1>Restocker John Doe</h1>
         </div>
-        <div className='text-base'>
+        <div className="text-base">
           <button>Profile</button>
         </div>
       </div>
 
-      <div className='flex flex-col justify-start mx-auto max-w-7xl p-6'>
-          <button className='p-4 text-xl border-[1px] border-black w-auto md:w-[30%]' onClick={()=>setInstructionOpen}>View Instruction</button>
-        <h1 className='text-2xl my-4'>Machines to restock</h1>
-        <div className='flex flex-col w-full '>
-          {machineIds.map((value,index) => (
-            <div key={index} className='p-2 '>
-              <Link href={`/restocker/${value}`} className='w-full hover:bg-blue-300 p-2 rounded-sm border-black border-[1px] bg-gray-200 flex flex-col'>
-                <span className='text-xl mb-2 font-semibold'>Machine 0{value}</span>
+      <div className="flex flex-col justify-start mx-auto max-w-7xl p-6">
+        <button
+          className="p-4 text-xl border-[1px] border-black w-auto md:w-[30%]"
+          onClick={() => setInstructionOpen(true)}
+        >
+          View Instruction
+        </button>
+        <h1 className="text-2xl my-4">Machines to restock</h1>
+        <div className="flex flex-col w-full ">
+          {machineIds.map((value, index) => (
+            <div key={index} className="p-2 ">
+              <Link
+                href={`/restocker/${value}`}
+                className="w-full hover:bg-blue-300 p-2 rounded-sm border-black border-[1px] bg-gray-200 flex flex-col"
+              >
+                <span className="text-xl mb-2 font-semibold">
+                  Machine 0{value}
+                </span>
 
-                <span className='pl-4 text-red-600 font-semibold'>Empty slots: 3</span>
-                <span className='pl-4 text-orange-400 font-semibold'>Low in stock slots: 3</span>
-                <span className='pl-4 text-blue-500 font-semibold'>Expired Items: {value+2}</span>
+                <span className="pl-4 text-red-600 font-semibold">
+                  Empty slots: 3
+                </span>
+                <span className="pl-4 text-orange-400 font-semibold">
+                  Low in stock slots: 3
+                </span>
+                <span className="pl-4 text-blue-500 font-semibold">
+                  Expired Items: {value + 2}
+                </span>
               </Link>
             </div>
           ))}
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

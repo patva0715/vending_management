@@ -277,8 +277,8 @@ const Page = ({ params }) => {
               <span>stock: {item.stock}</span>
             </div>
             <div>
-              <button className='bg-slate-500 p-2 rounded-sm text-green-50 mr-1'>Add</button>
-              <button className='bg-red-400 p-2 rounded-sm text-green-50'>Remove</button>
+              <button className='bg-slate-500 p-2 rounded-sm text-green-50 mr-1'>Modify</button>
+              {/* <button className='bg-red-400 p-2 rounded-sm text-green-50'>Remove</button> */}
             </div>
 
           </button>
