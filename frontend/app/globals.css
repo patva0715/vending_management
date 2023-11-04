@@ -29,3 +29,25 @@ body {
   filter:grayscale(.3);
   /* filter: sepia(30%) saturate(2000%) brightness(25%) hue-rotate(80deg); */
 }
+.spinner{
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+      transform: scale(1) rotate(0deg);
+  }
+  to {
+      transform: scale(1) rotate(360deg);
+  }
+}
+.fade{
+  animation: fadeIn 1600 ease-in ;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
