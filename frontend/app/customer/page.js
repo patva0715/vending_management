@@ -439,7 +439,7 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
           {/* ITEM DIVIDER CONTAINER */}
           <div className="basis-1/3 grow relative bg-white rounded-lg flex items-center flex-col  justify-center">
             <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold">Your Order</span>
-            <button className="text-3xl"><BiSolidUpArrow/></button>
+            <button className="text-3xl hidden md:block"><BiSolidUpArrow/></button>
             <div className="py-4 flex flex-col items-center justify-center ">
               <div className="">
                 <Image
@@ -459,12 +459,12 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
               </div>
               <span className="text-md">${Number(item.price).toFixed(2)}</span>
             </div>
-            <button className="text-3xl"><BiSolidDownArrow/></button>
+            <button className="text-3xl hidden md:block"><BiSolidDownArrow/></button>
           </div>
 
           {/* PAYMENT DIVIDER CONTAINER */}
           <div className="basis-2/3 grow bg-white rounded-lg p-4 px-10 flex items-center relative justify-between">
-            <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold">Payment Method</span>
+            <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold hidden md:block">Payment Method</span>
             <div className=" w-full aspect-video flex justify-center items-stretch">
               <PayWindow
                 setPayMethod={setPayMethod}
