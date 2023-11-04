@@ -437,7 +437,8 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
           onClick={(e) => e.stopPropagation()}
         >
           {/* ITEM DIVIDER CONTAINER */}
-          <div className="basis-1/3 grow bg-white rounded-lg flex items-center flex-col  justify-center">
+          <div className="basis-1/3 grow relative bg-white rounded-lg flex items-center flex-col  justify-center">
+            <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold">Your Order</span>
             <button className="text-3xl"><BiSolidUpArrow/></button>
             <div className="py-4 flex flex-col items-center justify-center ">
               <div className="">
@@ -453,13 +454,17 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
               <div className="text-left">
                 <span className="text-lg font-bold">{item.name}</span>
               </div>
-              <span className="text-xl">${Number(item.price).toFixed(2)}</span>
+              <div className="text-left">
+                <span className="text-md">Stock: {item.stock}</span>
+              </div>
+              <span className="text-md">${Number(item.price).toFixed(2)}</span>
             </div>
             <button className="text-3xl"><BiSolidDownArrow/></button>
           </div>
 
           {/* PAYMENT DIVIDER CONTAINER */}
-          <div className="basis-2/3 grow bg-white rounded-lg p-4 px-10 flex items-center justify-between">
+          <div className="basis-2/3 grow bg-white rounded-lg p-4 px-10 flex items-center relative justify-between">
+            <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold">Payment Method</span>
             <div className=" w-full aspect-video flex justify-center items-stretch">
               <PayWindow
                 setPayMethod={setPayMethod}
@@ -470,7 +475,7 @@ const OrderWindow = ({ setWindowOpen, open, item, selectedMachine }) => {
             </div>
           </div>
           <button
-            className=" p-2 rounded-md absolute bottom-0 translate-y-full "
+            className=" p-2 rounded-md absolute bottom-0 translate-y-full font-semibold text-red-100 "
             onClick={() => handleClose()}
           >
             -Back

@@ -153,7 +153,7 @@ const machine_dict = {
     items: [
       {
         name: "Chips Ahoy",
-        stock: 7,
+        stock: 2,
         price: 2.49,
         id: 13,
         icon: "/icons/cookies.png",
@@ -181,14 +181,14 @@ const machine_dict = {
       },
       {
         name: "Oranges",
-        stock: 20,
+        stock: 0,
         price: 0.79,
         id: 17,
         icon: "/icons/fruit.png",
       },
       {
         name: "Cereal",
-        stock: 6,
+        stock: 0,
         price: 2.99,
         id: 18,
         icon: "/icons/cereal.png",
