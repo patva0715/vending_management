@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sqlite3
 # . .venv/bin/activate
@@ -125,22 +125,33 @@ def machine(machine_id):
 def get_machine_ids():
     return list(machine_dict.keys())
 
-@app.route('/transaction', methods=['POST'])
-def process_transaction():
-    print(request.args['item'])
-    # item=request.args['item']
-    # payment_type = request.args['payment_type']
-    # cost = item.cost
-    # return (item.name,item.cost)
-    return "HELLO"
 
-# @app.route('/transaction', methods=['GET'])
-# def get_all_transactions():
-#     return []
 
-# @app.route('/restocker/login')
-# def login_restocer():
-#     return ""
+
+# @app.route('/restocker/login', methods=['POST'])
+# def login_restocker():
+#     request_data = request.get_json()
+#     username = request_data['username']
+#     password = request_data['password']
+#     return jsonify()
+
+@app.route('/restocker/login', methods=['POST'])
+def login_restocker():
+    req=request.json
+    username = req["username"]
+    password = req["password"]
+    if not username == 'admin' or not password=='admin':
+        return jsonify({
+            "msg":"Incorrect username or password"
+        }),403
+    return jsonify({
+        "isAuth":True,
+        "id":"0001",
+        "username":request.get_json()["username"],
+        "error":False
+    })
+
+  
 
 # if __name__ == '__main__':
 #     app.run(port=5000)
