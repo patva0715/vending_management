@@ -16,7 +16,7 @@ export default function Home() {
       <Image src='/home2.jpg' objectFit='cover' layout='fill' className='absolute blur-sm  scale-105'/>
       <div className='flex flex-col '>
         {navs.map((nav, index) => (
-          <NavButton nav={nav} />
+          <NavButton key={index} nav={nav} />
         ))}
       </div>
       <span className='fixed bottom-4 right-4 text-xs text-white'>Placeholder image</span>
