@@ -1,9 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import machine_dict from "@/app/mockData";
 const initialState = {
     ids: [],
-    focusedInventory: machine_dict[1],
-    error: null
+    focusedInventory: null,
+    focusedItem: null,
+    error: null,
+    transaction: {
+        status: null,
+        complete: false,
+        inventoryId: null,
+        itemId: null,
+        itemName: null,
+        price: null,
+        method: null
+    }
 
 }
 export const inventory = createSlice({
@@ -17,13 +26,12 @@ export const inventory = createSlice({
         setIds: (state, action) => {
             return {
                 ...state,
-                setIds: action.payload
+                ids: action.payload
             }
         },
-        setInventory: (state, action) => {
-            console.log(action.payload.response)
+        setFocusedInventory: (state, action) => {
             return ({
-                ...initialState,
+                ...state,
                 focusedInventory: action.payload
             })
         },
@@ -32,12 +40,34 @@ export const inventory = createSlice({
                 ...initialState,
                 error: action.payload.response.data.msg || "ERROR"
             })
+        },
+        setFocusedItem: (state, action) => {
+            return ({
+                ...state,
+                focusedItem: action.payload
+            })
+        },
+        setTransaction: (state, action) => {
+            console.log(action.payload)
+            return ({
+                ...state,
+                transaction: action.payload
+            })
+        },
+        resetTransactionState: (state, action) => {
+            console.log("Reseting")
+            return (
+                {
+                    ...state,
+                    transaction: { ...initialState.transaction }
+                }
+            )
         }
 
     }
 })
 
-export const { setIds, setInventory, setError, reset } = inventory.actions
+export const { setIds,resetTransactionState, setFocusedInventory, setFocusedItem, setError, reset, setTransaction } = inventory.actions
 export default inventory.reducer
 
 

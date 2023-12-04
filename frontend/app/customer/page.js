@@ -1,248 +1,4 @@
 "use client";
-const machine_dict = {
-  1: {
-    id: 1,
-    items: [
-      {
-        name: "Doritos",
-        stock: 8,
-        price: 3,
-        id: 1,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "Ruffles",
-        stock: 0,
-        price: 1.5,
-        id: 2,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "Sneakers",
-        stock: 3,
-        price: 2.29,
-        id: 3,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "Pop-Tarts",
-        stock: 9,
-        price: 1.29,
-        id: 4,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "SunChips",
-        stock: 5,
-        price: 1.29,
-        id: 5,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "Granola Bars",
-        stock: 2,
-        price: 1.29,
-        id: 6,
-        icon: "/icons/chips-3.png",
-      },
-      {
-        name: "Cookies",
-        stock: 2,
-        price: 1.29,
-        id: 7,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Cheetos",
-        stock: 10,
-        price: 1.29,
-        id: 8,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Ruffles",
-        stock: 8,
-        price: 1.29,
-        id: 9,
-        icon: "/icons/energy-bar.png",
-      },
-    ],
-    theme: {
-      primary_color: "#444",
-    },
-    properties: {
-      location: "1234 Foo st., Anaheim",
-      Status: "Operational",
-    },
-  },
-  2: {
-    id: 2,
-    items: [
-      {
-        name: "Gatorade",
-        stock: 8,
-        price: 3,
-        id: 10,
-        icon: "/icons/energy-drink.png",
-      },
-      {
-        name: "Iced Tea",
-        stock: 3,
-        price: 2,
-        id: 11,
-        icon: "/icons/energy-drink.png",
-      },
-      {
-        name: "Egg",
-        stock: 7,
-        price: 6.50,
-        id: 12,
-        icon: "/icons/egg.png",
-      },
-      {
-        name: "Water",
-        stock: 10,
-        price: 1.29,
-        id: 13,
-        icon: "/icons/soda-1.png",
-      },
-      {
-        name: "Sprite",
-        stock: 10,
-        price: 1.5,
-        id: 14,
-        icon: "/icons/soda-1.png",
-      },
-      {
-        name: "Lemonade",
-        stock: 10,
-        price: 1.29,
-        id: 15,
-        icon: "/icons/soda-1.png",
-      },
-      {
-        name: "Lemonade",
-        stock: 10,
-        price: 1.29,
-        id: 15,
-        icon: "/icons/soda-1.png",
-      },
-      {
-        name: "Lemonade",
-        stock: 10,
-        price: 1.29,
-        id: 15,
-        icon: "/icons/soda-1.png",
-      },
-      {
-        name: "Lemonade",
-        stock: 10,
-        price: 1.29,
-        id: 15,
-        icon: "/icons/soda-1.png",
-      },
-    ],
-    theme: {
-      primary_color: "#33c",
-    },
-  },
-  3: {
-    id: 3,
-    items: [
-      {
-        name: "Chips Ahoy",
-        stock: 7,
-        price: 2.49,
-        id: 13,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Pepsi",
-        stock: 15,
-        price: 1.99,
-        id: 14,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Oatmeal",
-        stock: 4,
-        price: 3.49,
-        id: 15,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Yogurt",
-        stock: 10,
-        price: 1.79,
-        id: 16,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Oranges",
-        stock: 20,
-        price: 0.79,
-        id: 17,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Cereal",
-        stock: 6,
-        price: 2.99,
-        id: 18,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Bottled Water",
-        stock: 18,
-        price: 0.99,
-        id: 19,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Frozen Pizza",
-        stock: 3,
-        price: 4.99,
-        id: 20,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Ice Cream",
-        stock: 8,
-        price: 3.49,
-        id: 21,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Cucumbers",
-        stock: 10,
-        price: 0.99,
-        id: 22,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Soda",
-        stock: 12,
-        price: 1.49,
-        id: 23,
-        icon: "/icons/energy-bar.png",
-      },
-      {
-        name: "Eggs",
-        stock: 14,
-        price: 2.29,
-        id: 24,
-        icon: "/icons/energy-bar.png",
-      },
-    ],
-    theme: {
-      primary_color: "#666",
-    },
-    properties: {
-      location: "5678 Bar St., Springfield",
-      Status: "Operational",
-    },
-  },
-};
 import { RiArrowLeftLine } from "react-icons/ri";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -252,50 +8,100 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { BsFillGridFill } from "react-icons/bs";
 import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi"
 import { useRouter } from 'next/navigation'
+import { useDispatch, useSelector } from "react-redux";
+import { fetchInventory, fetchInventoryIds, initiateTransaction, resetTransaction, setFocusedItem } from "@/states/actions/inventoryActions";
+import axios from 'axios'
+import { PORT } from "@/states/env";
+
 const Page = () => {
-  const [selectedMachine, setSelectedMachine] = useState();
-  const [machineIds, setMachineIds] = useState();
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [selected, setSelected] = useState({});
+  const [receipt, setReceipt] = useState({});
   const [windowOpen, setWindowOpen] = useState(false);
-  const [basis, setBasis] = useState(1);
+  const [basis, setBasis] = useState(2);
   const router = useRouter()
-  const fetchMachineIds = async () => {
-    try {
-      setMachineIds(Object.keys(machine_dict));
-      setSelectedMachine(machine_dict[1]);
-      return;
-      const data = await fetch("http://localhost:5001/machine").then((res) =>
-        res.json()
-      );
-      setMachineIds(data);
-      console.log(data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-  const fetchItem = async (id) => {
-    // if (id == selectedMachine.id) return;
-    setSelectedMachine(machine_dict[id]);
-    // const data = await fetch(`http://localhost:5001/machine/${id}`).then(
-    //   (res) => res.json()
-    // );
-    // console.log(data);
-    // setSelectedMachine(data);
-  };
-  const handleChangeMachine = (id) => {
-    setSelected({});
-    fetchItem(id);
-  };
-  const handleSelect = (key) => {
-    setWindowOpen(true);
-    setSelected(key);
-  };
+  const { ids, focusedInventory, focusedItem } = useSelector(state => state.inventory)
+  const dispatch = useDispatch()
 
+  const handleChangeMachine = (id) => {
+    dispatch(fetchInventory(id))
+  };
+  const handleSelect = async (key) => {
+    dispatch(setFocusedItem(focusedInventory.items[key])
+    )
+    // DIVIDER
+    // const config = {
+    //   header: {
+    //     "Content-Type": "application/json",
+    //   },
+    // };
+    // const { data } = await axios.post(
+    //   'http://127.0.0.1:5007/restocker/login',
+    //   {
+    //     username: 'michael',
+    //     password: '1234512312'
+    //   },
+    // DIVIDER 
+    // const { data } = await axios.put(
+    //   'http://127.0.0.1:5007/inventory/1',
+    //   {
+    //     item_id: 1,
+    //     quantity: 2,
+    //     method: 'subtract'
+    //   },
+    // DIVIDER
+    // PUT INVENTORY
+    // const { data } = await axios.put(
+    //   'http://127.0.0.1:5006/inventory/1',
+    //   {
+    //     target_item_id :1,
+    //     quantity : 5
+    //   },
+    // console.log(data)
+    setWindowOpen(true);
+  };
+  const handlePurchase = async (item) => {
+    console.log("PURCHASING")
+    console.log(item)
+
+    let today = new Date()
+    let trans = {
+      item_id: item.id,
+      item_name: item.name,
+      price: item.price,
+      time: formatDate(today),
+      inventory_id: focusedInventory.id,
+      method: item.method
+    }
+    console.log(trans)
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      'http://127.0.0.1:500/transaction',
+      trans,
+    )
+    console.log("RECEIPT")
+    setReceipt(trans)
+    if (true) {
+      const { data } = await axios.put(
+        `http://127.0.0.1:${PORT}/inventory/${trans.inventory_id}`,
+        {
+          quantity: item.quantity - 1,
+          item_id: item.id
+        },
+      )
+      setWindowOpen(false)
+      handleChangeMachine(trans.inventory_id)
+      console.log(data)
+    }
+
+  }
   useEffect(() => {
-    fetchMachineIds();
-  }, []);
+    dispatch(fetchInventoryIds())
+  }, [])
   useEffect(() => {
     setTimeout(() => setMessage(""), 3000);
   }, [message]);
@@ -303,7 +109,7 @@ const Page = () => {
     setTimeout(() => setError(""), 3000);
   }, [error]);
 
-  const transitions = useTransition(selectedMachine, {
+  const transitions = useTransition(focusedInventory, {
     // ref: transRef,
     keys: null,
     from: { opacity: 0, transform: "translate3d(20%,0,0)" },
@@ -313,33 +119,39 @@ const Page = () => {
     // exitBeforeEnter: true,
   });
   return (
-    <div className="">
+    <div className="w-full">
       <OrderWindow
-        selectedMachine={selectedMachine}
         open={windowOpen}
         setWindowOpen={setWindowOpen}
-        itemKey={selected}
-        handleSelect={handleSelect}
+        handlePurchase={handlePurchase}
       />
-      <div className="py-5 mb-4 bg-gray-600 text-white flex items-center">
-        <button onClick={()=>router.back()}>
-        <RiArrowLeftLine  className="text-2xl mx-3"/>
+      {receipt.time && <div className="fixed bottom-2 right-2 p-2 flex flex-col gap-2 border-[1px] border-gray-500">
+        <h1 className="text-xl border-b border-gray-300 pb-1">RECEIPT</h1>
+      <span className="font-semibold">Item name</span>
+        <span>{receipt.item_id}</span>
+        <span className="font-semibold">Inventory Id</span>
+        <span>{receipt.inventory_id}</span>
+        <span className="font-semibold">Method</span>
+        <span>{receipt.method}</span>
+        <span className="font-semibold">Time</span>
+        <span>{receipt.time}</span>
+      </div>}
+      {/* HEADER DIVIDER */}
+      <div className="py-6 mb-4 bg-blacks-1 text-white flex items-center">
+        <button onClick={() => router.back()}>
+          <RiArrowLeftLine className="text-2xl mx-3" />
         </button>
         <h1 className=" text-3xl flex ml-1">
           Transaction Simulator
         </h1>
       </div>
+      {/* INVENTORY IDS DIVIDER */}
       <div className="text-center text-xl flex max-w-full md:max-w-[50vw] mx-auto items-center mb-2">
-        {machineIds &&
-          machineIds.map((id, index) => (
+        {ids &&
+          ids.map((id, index) => (
             <button
               key={index}
               className="p-2  border-2 aspect-square min-w-[50px]"
-              style={
-                {
-                  // backgroundColor: `${id == selectedMachine.id ? "#aaa" : "unset"}`,
-                }
-              }
               onClick={() => handleChangeMachine(id)}
             >
               {id}
@@ -354,17 +166,16 @@ const Page = () => {
           </button>
         </div>
       </div>
-
-      <div className=" max-w-full md:max-w-[50vw] mx-auto relative">
+      {/* ITEMS GRID DIVIDER */}
+      <div className="w-full max-w-full border-2 md:max-w-[50vw] mx-auto relative">
         {transitions((style, i) => (
-          <animated.div style={style} className="flex flex-wrap absolute">
-            {i.items &&
+          <animated.div style={style} className="flex flex-wrap absolute w-full">
+            {i &&
               i.items.map((item, index) => (
                 <Item
                   basis={basis}
                   key={index}
                   item={{ ...item, key: index }}
-                  selected={selected}
                   handleSelect={handleSelect}
                   index={index}
                 />
@@ -377,27 +188,24 @@ const Page = () => {
 };
 
 // DIVIDER ITEM
-const Item = ({ basis, item, handleSelect, selected, index }) => {
+const Item = ({ basis, item, handleSelect, index }) => {
   return (
     <div
-      className="p-2 shrink-0 grow"
+      className="p-2 shrink grow basis-1/3 max-w-[1/3]"
       style={{
-        flexBasis: `${(1 / (basis + 1)) * 100}%`,
-        maxWidth: `${100 / (basis + 1)}%`,
+        // flexBasis: `${(1 / (basis + 1)) * 100}%`,
+        // maxWidth: `${100 / (basis + 1)}%`,
       }}
     >
       <button
-        className="w-full bg-gray-200 dark:bg-gray-800 border-2 rounded-sm p-2 flex flex-col items-center shrink-0   "
-        style={{
-          borderColor: `${item.id == selected.id ? "#aa5555" : "#333333"}`,
-        }}
+        className="w-full bg-gray-200 dark:bg-gray-800 hover:bg-blacks-1 hover:text-white duration-500 rounded-sm p-2 flex flex-col items-center shrink-0   "
         onClick={(e) => handleSelect(index)}
       >
         <div className="shrink-0">
           <Image
             alt="icon"
-            // src="/icons/chips-1.png"
-            src={item.icon}
+            src="/icons/chips-1.png"
+            // src={item.icon}
             width={70}
             height={70}
             className="ico z-0"
@@ -415,29 +223,27 @@ const Item = ({ basis, item, handleSelect, selected, index }) => {
   );
 };
 
-// DIVIDER
-const OrderWindow = ({ setWindowOpen, open, itemKey, selectedMachine, handleSelect }) => {
-  const [payMethod, setPayMethod] = useState("cash");
-  const [item, setItem] = useState({})
-  const handleClose = () => {
-    setWindowOpen(false);
-  };
-  const handleChangeItem = (move) => {
-    handleSelect(Math.abs(itemKey + move + selectedMachine.items.length) % selectedMachine.items.length)
-  };
+// DIVIDER ORDER WINDOW: display item selected
+const OrderWindow = ({ setWindowOpen, open, handlePurchase }) => {
+  const { focusedItem } = useSelector(state => state.inventory)
+  const dispatch = useDispatch()
   const divStyle = {
     display: open ? "flex" : "none",
   };
-  useEffect(() => {
-    if (!selectedMachine) return
-    setItem(selectedMachine.items[itemKey])
-  }, [itemKey, selectedMachine])
-  // useEffect(()=>{
-  //   console.log("CHANGED")
-  //   console.log(item)
-  // },[item])
-  if (!item) return <></>
-  return (
+  const handleClose = () => {
+    setWindowOpen(false);
+    dispatch(resetTransaction())
+  };
+  // const handleChangeItem = (move) => {
+  //   let idx = (Math.abs(itemKey + move + focusedInventory.items.length) % focusedInventory.items.length)
+  //   dispatch(setFocusedItem(focusedInventory.items[idx]))
+  // };
+  // useEffect(() => {
+  // if (!selectedMachine) return
+  // setItem(selectedMachine.items[itemKey])
+  // }, [itemKey ])
+  if (!focusedItem) return <></>
+  else return (
     <>
       <div
         style={divStyle}
@@ -451,27 +257,27 @@ const OrderWindow = ({ setWindowOpen, open, itemKey, selectedMachine, handleSele
           {/* ITEM DIVIDER CONTAINER */}
           <div className="basis-1/3 grow relative bg-white rounded-lg flex items-center flex-col  justify-center">
             <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold">Your Order</span>
-            <button className="text-3xl hidden md:block" onClick={() => handleChangeItem(1)}><BiSolidUpArrow /></button>
+            {/* <button className="text-3xl hidden md:block" onClick={() => handleChangeItem(1)}><BiSolidUpArrow /></button> */}
             <div className="py-4 flex flex-col items-center justify-center ">
               <div className="">
                 <Image
                   alt="icon"
-                  // src="/icons/chips-1.png"
-                  src={item.icon}
+                  src="/icons/chips-1.png"
+                  // src={focusedItem.icon}
                   width={70}
                   height={70}
                   className="ico z-0"
                 />
               </div>
               <div className="text-left">
-                <span className="text-lg font-bold">{item.name}</span>
+                <span className="text-lg font-bold">{focusedItem.name}</span>
               </div>
               <div className="text-left">
-                <span className="text-md">Stock: {item.stock}</span>
+                <span className="text-md">Stock: {focusedItem.quantity}</span>
               </div>
-              <span className="text-md">${Number(item.price).toFixed(2)}</span>
+              <span className="text-md">${Number(focusedItem.price).toFixed(2)}</span>
             </div>
-            <button className="text-3xl hidden md:block" onClick={() => handleChangeItem(-1)}><BiSolidDownArrow /></button>
+            {/* <button className="text-3xl hidden md:block" onClick={() => handleChangeItem(-1)}><BiSolidDownArrow /></button> */}
           </div>
 
           {/* PAYMENT DIVIDER CONTAINER */}
@@ -479,37 +285,37 @@ const OrderWindow = ({ setWindowOpen, open, itemKey, selectedMachine, handleSele
             <span className="top-0 -translate-y-full text-white text-lg left-0 absolute font-semibold hidden md:block">Payment Method</span>
             <div className=" w-full aspect-video flex justify-center items-stretch">
               <PayWindow
-                setPayMethod={setPayMethod}
-                item={item}
-                payMethod={payMethod}
+                handlePurchase={handlePurchase}
                 open={open}
               />
             </div>
           </div>
+
           <button
             className=" p-2 rounded-md absolute bottom-0 translate-y-[110%] font-semibold text-red-100 border-[2px] "
             onClick={() => handleClose()}
           >
             Back
           </button>
-          {/* DIVIDER */}
         </div>
       </div>
 
       <div
         style={divStyle}
         className="fixed h-full w-full opacity-80 z-[9] bg-gray-800 "
-        onClick={() => setWindowOpen(false)}
+        onClick={() => handleClose()}
       />
     </>
   );
 };
 
-// DIVIDER
-const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
-  const [transaction, setTransaction] = useState();
-  const [receipt, setReceipt] = useState();
+// DIVIDER PAY WINDOW: display payment options
+const PayWindow = ({ open, handlePurchase }) => {
+  const [payMethod, setPayMethod] = useState('cash')
   const [receiptOpen, setReceiptOpen] = useState(false);
+  const [statusIdx, setStatusIdx] = useState(0);
+  const { focusedInventory, focusedItem, transaction } = useSelector(state => state.inventory)
+  const dispatch = useDispatch()
   const PayCashStyle = {
     backgroundColor: payMethod == "cash" ? "#222" : "transparent",
     color: payMethod == "cash" ? "white" : "inherit",
@@ -518,28 +324,7 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
     backgroundColor: payMethod != "cash" ? "#222" : "transparent",
     color: payMethod != "cash" ? "white" : "inherit",
   };
-  const [statusIdx, setStatusIdx] = useState(0);
-  const states = [
-    ({ style }) => (
-      <animated.div style={style}>{"PROCESSING ORDER"}</animated.div>
-    ),
-    ({ style }) => <animated.div style={style}>VENDING</animated.div>,
-    ({ style, name }) => (
-      <animated.div style={style}>DISPENSING {name.toUpperCase()}</animated.div>
-    ),
-    ({ style }) => (
-      <animated.div style={style}>{"TRANSACTION COMPLETE"}</animated.div>
-    ),
-    ({ style }) => (
-      <animated.div style={style}>AUTHENTICATING CARD</animated.div>
-    ),
-    ({ style }) => <animated.div style={style}>CARD APPROVED</animated.div>,
-    ({ style, change }) => (
-      <animated.div style={style}>
-        DISPENSING CHANGE (${(Math.round(change * 10) / 10).toFixed(2)})
-      </animated.div>
-    ),
-  ];
+
   const transitions = useTransition(statusIdx, {
     keys: null,
     from: { opacity: 0, transform: "translate3d(0,10%,0)" },
@@ -551,79 +336,73 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
     exitBeforeEnter: true,
   });
   const processOrder = (itemBought, method) => {
-    setTransaction({
-      item: itemBought,
-      payMethod: method,
-    });
-    console.log(new Date())
-    let x = new Date()
-    setReceipt({
-      item: { ...item },
-      machineId: 1,
-      payMethod: payMethod,
-      date: x.toLocaleString()
-    });
+    // const order = {
+    //   status: 'selecting',
+    //   complete: false,
+    //   inventoryId: focusedInventory.id,
+    //   itemId: focusedItem.id,
+    //   itemName: focusedItem.name,
+    //   price: focusedItem.price,
+    //   method: method
+    // }
+    handlePurchase({ ...itemBought, method })
+
   };
+
   useEffect(() => {
-    if (!transaction) return;
-    if (transaction.payMethod == "cash") {
-      // // TODO: VENDING
-      // setTimeout(() => setStatusIdx(1), 2000);
-      // TODO: DISPENSING ITEM
-      setTimeout(() => setStatusIdx(2), 2000);
-      // TODO: DISPENSING CHANGE
-      setTimeout(() => setStatusIdx(6), 4800);
-      // TODO: TRANSACTION COMPLETE
-      setTimeout(() => setStatusIdx(3), 6500);
-    } else {
-      setStatusIdx(0);
-      // AUTHENTICATING CARD START AT 1000ms
-      setTimeout(() => setStatusIdx(4), 1000);
-      // CARD APPROVCED
-      setTimeout(() => setStatusIdx(5), 3500);
-      // VENDING
-      setTimeout(() => setStatusIdx(2), 5000);
-      // TRANSACTION COMPLETE
-      setTimeout(() => setStatusIdx(3), 7300);
-    }
-  }, [transaction]);
+    // if (!transaction) return;
+    // if (transaction.payMethod == "cash") {
+    //   setTimeout(() => setStatusIdx(2), 2000);
+    //   setTimeout(() => setStatusIdx(6), 4800);
+    //   setTimeout(() => setStatusIdx(3), 6500);
+    // } else {
+    //   setStatusIdx(0);
+    //   // AUTHENTICATING CARD START AT 1000ms
+    //   setTimeout(() => setStatusIdx(4), 1000);
+    //   // CARD APPROVCED
+    //   setTimeout(() => setStatusIdx(5), 3500);
+    //   // VENDING
+    //   setTimeout(() => setStatusIdx(2), 5000);
+    //   // TRANSACTION COMPLETE
+    //   setTimeout(() => setStatusIdx(3), 7300);
+    // }
+    // CHANGE STATUS DEPENDING ON TRANSACTION PROCESSING
+  }, [transaction.status]);
   useEffect(() => {
     if (!open) {
       setReceiptOpen(false)
-      setReceipt(0);
-      setTransaction(null);
       setStatusIdx(0);
     }
   }, [open]);
-  // DIVIDER RECEIPT IF THERE IS
-  if (receiptOpen && receipt) {
-    console.log(receipt)
+
+  // DIVIDER RECEIPT WINDOW IF OPEN
+  if (receiptOpen && transaction.complete) {
     return (
       <div className="flex justify-center flex-col w-full">
         <span className="text-lg font-semibold text-center">Transaction Data</span>
         <div className="flex">
           <span>Machine ID</span>
-          <span className="grow text-right">01</span>
+          <span className="grow text-right">{transaction.inventoryId}</span>
         </div>
         <div className="flex">
           <span>Item ID</span>
-          <span className="grow text-right">0002</span>
+          <span className="grow text-right">{transaction.itemId}</span>
         </div>
         <div className="flex">
           <span>Item Name</span>
-          <span className="grow text-right">{receipt.item.name}</span>
+          <span className="grow text-right">{transaction.itemName}</span>
         </div>
         <div className="flex">
           <span>Price Paid</span>
-          <span className="grow text-right">${receipt.item.price}</span>
+          <span className="grow text-right">${transaction.price}</span>
         </div>
         <div className="flex">
           <span>Payment Method</span>
-          <span className="grow text-right">{receipt.payMethod}</span>
+          <span className="grow text-right">{transaction.method}</span>
         </div>
         <div className="flex">
           <span>Date & Time</span>
-          <span className="grow text-right">{receipt.date}</span>
+          <span className="grow text-right">{transaction.date}</span>
         </div>
 
         <button className="p-1 rounded-sm bg-red-100" onClick={() => setReceiptOpen(false)}>Close</button>
@@ -631,17 +410,17 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
     );
   }
   // DIVIDER PROCESSING TRANSACTION WINDOW
-  if (transaction)
+  if (transaction.complete)
     return (
       <div className="  flex items-center flex-col justify-center ">
-        <div className="text-[2rem] md:text-[1vw]">
+        {/* <div className="text-[2rem] md:text-[1vw]">
           {statusIdx != 3 ? (
             <ImSpinner8 className="spinner" />
           ) : (
             <AiOutlineCheckCircle />
           )}
-        </div>
-        {transitions((style, index) => {
+        </div> */}
+        {/* {transitions((style, index) => {
           const Status = states[index];
           return (
             <Status
@@ -650,10 +429,9 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
               name={transaction.item.name}
             />
           );
-        })}
-        {/* <button onClick={()=>setTransaction({payMethod:'cash'})}>CASH</button> */}
+        })} */}
         <div className=" min-h-[2rem] mt-2">
-          {statusIdx == 3 ? (
+          {transaction.complete ? (
             <button
               className="fade border-[1px] h-full px-2 border-black rounded-sm"
               onClick={() => setReceiptOpen(true)}
@@ -686,25 +464,27 @@ const PayWindow = ({ setPayMethod, item, payMethod, open }) => {
             Pay with card
           </button>
         </div>
-        <PaymentAcceptor
+        <PaymentSelector
           method={payMethod}
-          item={item}
-          setPayMethod={setPayMethod}
+          item={focusedItem}
           processOrder={processOrder}
         />
       </div>
     );
 };
 
-// DIVIDER
-const PaymentAcceptor = ({ method, item, processOrder }) => {
+
+// DIVIDER SELECTOR FOR CASH OR CARD UI
+const PaymentSelector = ({ method, item, processOrder }) => {
   const [fund, setFund] = useState(0);
   const [loadingCash, setLoadingCash] = useState(false);
+
   const handleCashInsert = (val) => {
     setLoadingCash(true);
     setTimeout(() => setLoadingCash(false), 2000);
     setTimeout(() => {
       if (fund + val >= item.price) {
+        setFund(0)
         processOrder({ ...item, fund: fund + val }, "cash");
       }
     }, 2000);
@@ -712,9 +492,12 @@ const PaymentAcceptor = ({ method, item, processOrder }) => {
       setFund((x) => x + val);
     }, 800);
   };
+
   const handleCardUse = () => {
     processOrder(item, "card");
   };
+
+  // DIVIDER CASH METHOD
   if (method == "cash")
     return (
       <div className="flex flex-col grow">
@@ -754,7 +537,7 @@ const PaymentAcceptor = ({ method, item, processOrder }) => {
         )}
       </div>
     );
-  // DIVIDER
+  // DIVIDER CARD METHOD
   else
     return (
       <div className="flex flex-wrap">
@@ -792,3 +575,14 @@ const PaymentAcceptor = ({ method, item, processOrder }) => {
     );
 };
 export default Page;
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
