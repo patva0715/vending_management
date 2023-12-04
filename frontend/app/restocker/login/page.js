@@ -14,16 +14,17 @@ const Page = () => {
     const router = useRouter()
 
     const handleSubmit = () => {
-        dispatch(login({ username, password }))
+        // dispatch(login({ username, password }))
+        router.pusy('/restocker')
         return
     }
 
 
     useEffect(() => {
 
-        if (user.isAuth) router.push('/restocker')
+        // if (user.isAuth) router.push('/restocker')
         // if (user.error) setError("Invalid username or password.")
-        if (user.error) setError(user.error);
+        // if (user.error) setError(user.error);
     }, [user])
 
     return (
