@@ -1,7 +1,8 @@
 'use client'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
-    instructions: JSON.parse(window.localStorage.getItem("instructions")),
+    // instructions: JSON.parse(window.localStorage.getItem("instructions")),
+    instruction:{},
     activeInstruction: {
         username: null,
         note: "",
